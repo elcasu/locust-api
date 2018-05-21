@@ -10,7 +10,7 @@ class ProductsHandler {
 
   async getItem(req, res) {
     // xxxxxxxxxx MEMORY LEAK xxxxxxxxxx //
-    miStr.push(new Array(10000000).join('*'))
+    // miStr.push(new Array(10000000).join('*'))
     // xxxxxxxxxx xxxxxxxxxxx xxxxxxxxxx //
     const product = await Product.getItem(req.params.id)
     res.send(200, product)

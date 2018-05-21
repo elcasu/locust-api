@@ -33,6 +33,8 @@ class Routes {
 
     // ######## Public endpoints #######
     this.appRoutes.get('/', handlers.public.main)
+    this.appRoutes.get('/countries', handlers.public.getCountries)
+    this.appRoutes.get('/countries/:countryId/cities', handlers.public.getCities)
   }
 
   get() {

@@ -11,18 +11,18 @@ class UserBehavior(TaskSet):
         # self.access_token = response.json()["token"]
         return response.json()["token"]
         
+    def on_start(self):
+        self.accessToken = self.authenticate()
+
     # ---------- tasks ----------
     @task
     def getProductList(self):
         # first, request an unauthenticated endpoint
         self.client.get('/api/')
 
-        # authenticate
-        accessToken = self.authenticate()
-
         # get list of products (authenticated EP)
         response = self.client.get('/api/products', headers = {
-            "x-access-token": accessToken
+            "x-access-token": self.accessToken
         })
         products = response.json()
         pIndex = random.randint(0, len(products) - 1)
@@ -30,7 +30,7 @@ class UserBehavior(TaskSet):
 
         # request a product (authenticated EP)
         self.client.get('/api/products/' + pId, headers = {
-            "x-access-token": accessToken
+            "x-access-token": self.accessToken
         })
 
 
