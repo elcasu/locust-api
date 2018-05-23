@@ -1,6 +1,13 @@
 const Product = require('../models/product')
 
 let miStr = []
+let counter = 0
+
+const delay = (t) => {
+  return new Promise((resolve, reject) => {
+    return setTimeout(resolve, t)
+  })
+}
 
 class ProductsHandler {
   async all(req, res) {
@@ -15,7 +22,17 @@ class ProductsHandler {
       // xxxxxxxxxx xxxxxxxxxxx xxxxxxxxxx //
     }
     const product = await Product.getItem(req.params.id)
-    res.send(200, product)
+
+    if(req.query.pf) {
+      counter += 100
+      console.log('COUNTER-->', counter)
+      setTimeout(() => {
+        res.send(200, product)
+      }, counter)
+      // await delay(counter)
+    } else {
+      res.send(200, product)
+    }
   }
 }
 

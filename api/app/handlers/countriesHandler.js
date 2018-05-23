@@ -1,4 +1,5 @@
 const Country = require('../models/country')
+const City = require('../models/city')
 
 class CountriesHandler {
   async getCountries(req, res) {
@@ -12,7 +13,8 @@ class CountriesHandler {
   }
 
   async getCities(req, res) {
-    res.status(200).send([])
+    const cities = await City.find({})
+    res.status(200).send(cities)
   }
 }
 
