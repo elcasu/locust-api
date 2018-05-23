@@ -24,14 +24,15 @@ class UserBehavior(TaskSet):
         response = self.client.get('/api/products', headers = {
             "x-access-token": self.accessToken
         })
-        products = response.json()
-        pIndex = random.randint(0, len(products) - 1)
-        pId = products[pIndex]['_id']
+        if response:
+            products = response.json()
+            pIndex = random.randint(0, len(products) - 1)
+            pId = products[pIndex]['_id']
 
-        # request a product (authenticated EP)
-        self.client.get('/api/products/' + pId + '?lk=1', headers = {
-            "x-access-token": self.accessToken
-        })
+            # request a product (authenticated EP)
+            self.client.get('/api/products/' + pId + '?lk=1', headers = {
+                "x-access-token": self.accessToken
+            })
 
 
 class WebsiteUser(HttpLocust):
