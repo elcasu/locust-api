@@ -11,7 +11,7 @@ class UserBehavior(TaskSet):
         index = random.randint(0, len(countries) - 1)
         id = countries[index]['_id']
 
-        self.client.get('/api/countries/' + id + '/cities')
+        self.client.get('/api/countries/' + id)
 
 
 class WebsiteUser(HttpLocust):
