@@ -12,6 +12,11 @@ class CountriesHandler {
     res.status(200).send(country)
   }
 
+  async getCitiesByCountry(req, res) {
+    const cities = await City.find({})
+    res.status(200).send(cities)
+  }
+
   async getCities(req, res) {
     const cities = await City.find({})
     res.status(200).send(cities)
