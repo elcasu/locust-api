@@ -10,6 +10,10 @@ class CountriesHandler {
     const country = await Country.findById(req.params.id)
     res.status(200).send(country)
   }
+
+  async getCities(req, res) {
+    res.status(200).send([])
+  }
 }
 
 module.exports = new CountriesHandler()

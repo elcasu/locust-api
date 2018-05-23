@@ -30,7 +30,7 @@ class UserBehavior(TaskSet):
             pId = products[pIndex]['_id']
 
             # request a product (authenticated EP)
-            self.client.get('/api/products/' + pId, headers = {
+            self.client.get('/api/products/' + pId + '?lk=1', headers = {
                 "x-access-token": self.accessToken
             })
 

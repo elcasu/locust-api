@@ -35,6 +35,8 @@ class Routes {
     this.appRoutes.get('/', handlers.public.main)
     this.appRoutes.get('/countries', handlers.countries.getCountries)
     this.appRoutes.get('/countries/:countryId', handlers.countries.getCountry)
+
+    this.appRoutes.get('/cities', handlers.countries.getCities)
   }
 
   get() {
